@@ -17,7 +17,7 @@ func main() {
 	defer sdl.Quit()
 
 	window, err := sdl.CreateWindow("test", sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED,
-		800, 600, sdl.WINDOW_SHOWN)
+		800, 600, sdl.WINDOW_SHOWN|sdl.WINDOW_RESIZABLE)
 	if err != nil {
 		panic(err)
 	}
@@ -63,7 +63,7 @@ func main() {
 					}
 				}
 			}
-			renderer.SetDrawColor(242, 242, 242, 255)
+			renderer.SetDrawColor(255, 255, 255, 255)
 			renderer.Clear()
 
 			for _, r := range rects {
@@ -72,6 +72,11 @@ func main() {
 				} else {
 					renderer.SetDrawColor(0, 255, 0, 255)
 				}
+				renderer.FillRect(r)
+			}
+			for i := int32(0); i < 100; i++ {
+				r := &sdl.Rect{300, i * 10, 9, 9}
+				renderer.SetDrawColor(255-uint8(i*2), 255, 255-uint8(i*2), 255)
 				renderer.FillRect(r)
 			}
 			renderer.Present()
