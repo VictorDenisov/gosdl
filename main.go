@@ -74,8 +74,8 @@ func main() {
 				}
 				renderer.FillRect(r)
 			}
-			for i := int32(0); i < 100; i++ {
-				r := &sdl.Rect{300, i * 10, 9, 9}
+			for i := int32(0); i < 110; i++ {
+				r := &sdl.Rect{270, i * 10, 9, 9}
 				renderer.SetDrawColor(255-uint8(i*2), 255, 255-uint8(i*2), 255)
 				renderer.FillRect(r)
 			}
